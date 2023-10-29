@@ -89,6 +89,10 @@ static void imprimirNodo( NodoBase raiz )
 	
 	if(	raiz instanceof NodoOperacion ){
 		tipoOp sel=((NodoOperacion) raiz).getOperacion();
+		if (sel == tipoOp.op_and)
+			System.out.println("&&");
+		if (sel == tipoOp.op_or)
+			System.out.println("||");
 		if(sel==tipoOp.menor)
 			System.out.println("<");
 		if(sel==tipoOp.mayor)

@@ -26,11 +26,11 @@ import java.io.Reader;
 /******************************************************************
 BORRAR SI NO SE NECESITA
 	//TODO: Cambiar la SF por esto o ver que se hace
-	//Crear un nuevo objeto java_cup.runtime.Symbol con información sobre el token actual sin valor
+	//Crear un nuevo objeto java_cup.runtime.Symbol con informaci?n sobre el token actual sin valor
  	  private Symbol symbol(int type){
     		return new Symbol(type,yyline,yycolumn);
 	  }
-	//Crear un nuevo objeto java_cup.runtime.Symbol con información sobre el token actual con valor
+	//Crear un nuevo objeto java_cup.runtime.Symbol con informaci?n sobre el token actual con valor
 	  private Symbol symbol(int type,Object value){
     		return new Symbol(type,yyline,yycolumn,value);
 	  }
@@ -86,12 +86,6 @@ espacio		= [ \t]+
 "<"             {	if(debug) System.out.println("token LT");
 			return sf.newSymbol("LT",sym.LT);
 			}
-">"             {	if(debug) System.out.println("token GT");
-			return sf.newSymbol("GT",sym.GT);
-			}
-">="             {	if(debug) System.out.println("token GET");
-			return sf.newSymbol("GET",sym.GET);
-			}
 "+"             {	if(debug) System.out.println("token PLUS");
 			return sf.newSymbol("PLUS",sym.PLUS);
 			}
@@ -104,6 +98,12 @@ espacio		= [ \t]+
 "/"             {	if(debug) System.out.println("token OVER");
 			return sf.newSymbol("OVER",sym.OVER);
 			}
+"&&"           { if(debug) System.out.println("token AND");
+           return sf.newSymbol("AND",sym.AND);
+           }
+"||"            { if(debug) System.out.println("token OR");
+           return sf.newSymbol("OR",sym.OR);
+           }
 "("             {	if(debug) System.out.println("token LPAREN");
 			return sf.newSymbol("LPAREN",sym.LPAREN);
 			}
