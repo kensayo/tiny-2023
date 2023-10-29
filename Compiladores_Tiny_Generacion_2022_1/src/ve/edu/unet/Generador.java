@@ -233,7 +233,22 @@ public class Generador {
 							UtGen.emitirRM("LDC", UtGen.AC, 0, UtGen.AC, "caso de falso (AC=0)");
 							UtGen.emitirRM("LDA", UtGen.PC, 1, UtGen.PC, "Salto incodicional a direccion: PC+1 (es falso evito colocarlo verdadero)");
 							UtGen.emitirRM("LDC", UtGen.AC, 1, UtGen.AC, "caso de verdadero (AC=1)");
-							break;	
+							break;
+			case 	 op_and:
+							UtGen.emitirRM("JEQ", UtGen.AC1, 2, UtGen.PC, "voy dos instrucciones mas alla si hay corto circuito (AC1 == 0)"); //  significa que la exp logica es falsa
+							UtGen.emitirRO("MUL", UtGen.AC, UtGen.AC1, UtGen.AC, "operacion logica AND, se Multiplica AC * AC1");
+							UtGen.emitirRM("JNE", UtGen.AC, 2, UtGen.PC, "voy dos instrucciones mas alla si es verdadero (ACC != 0)");
+							UtGen.emitirRM("LDC", UtGen.AC, 0, UtGen.AC, "caso de falso (AC=0)");
+							UtGen.emitirRM("LDA", UtGen.PC, 1, UtGen.PC, "Salto incodicional a direccion: PC+1 (es falso evito colocarlo verdadero)");
+							UtGen.emitirRM("LDC", UtGen.AC, 1, UtGen.AC, "caso de verdadero (AC=1)");
+							break;
+			case 	  op_or:
+							UtGen.emitirRO("ADD", UtGen.AC, UtGen.AC1, UtGen.AC, "operacionn logica suma entre AC y AC1");
+							UtGen.emitirRM("JNE", UtGen.AC, 2, UtGen.PC, "verificar que AC sea diferente de 0");
+							UtGen.emitirRM("LDC", UtGen.AC, 0, UtGen.AC, "caso de falso (AC=0)");
+							UtGen.emitirRM("LDA", UtGen.PC, 1, UtGen.PC, "Salto incodicional a direccion: PC+1 (es falso evito colocarlo verdadero)");
+							UtGen.emitirRM("LDC", UtGen.AC, 1, UtGen.AC, "caso de verdadero (AC=1)");
+							break;
 			default:
 							UtGen.emitirComentario("BUG: tipo de operacion desconocida");
 		}
