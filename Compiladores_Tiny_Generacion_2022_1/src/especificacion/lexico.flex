@@ -107,6 +107,12 @@ espacio		= [ \t]+
 "/"             {	if(debug) System.out.println("token OVER");
 			return sf.newSymbol("OVER",sym.OVER);
 			}
+"&&"           { if(debug) System.out.println("token AND");
+           return sf.newSymbol("AND",sym.AND);
+           }
+"||"            { if(debug) System.out.println("token OR");
+           return sf.newSymbol("OR",sym.OR);
+           }
 "("             {	if(debug) System.out.println("token LPAREN");
 			return sf.newSymbol("LPAREN",sym.LPAREN);
 			}
