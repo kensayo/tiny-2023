@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Compiladores_Tiny_Generacion_2022_1/src/especificacion/lexico.flex" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Compiladores_Tiny_Generacion_2022_1/src/especificacion/sintactico.cup" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/Compiladores_Tiny_Generacion_2022_1/src/ve/edu/unet/Lexico.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Compiladores_Tiny_Generacion_2022_1/src/ve/edu/unet/parser.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/out/production/Compiladores_Tiny_Generacion_2022_3/ve/edu/unet/parser.java.bak" charset="windows-1252" />
+  </component>
+</project>
