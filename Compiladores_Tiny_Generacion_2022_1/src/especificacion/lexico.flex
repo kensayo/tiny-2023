@@ -71,6 +71,9 @@ espacio		= [ \t]+
 "until"         {	if(debug) System.out.println("token UNTIL");
 			return sf.newSymbol("UNTIL",sym.UNTIL);
 			}
+"for"           {   if(debug) System.out.println("token FOR");
+            return sf.newSymbol("FOR",sym.FOR);
+            }
 "read"          {	if(debug) System.out.println("token READ");
 			return sf.newSymbol("READ",sym.READ);
 			}
