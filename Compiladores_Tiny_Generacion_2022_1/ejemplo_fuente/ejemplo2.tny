@@ -2,8 +2,8 @@
   in TINY language -
   computes factorial
 }
-read x; { input an integer }
-if 0 < x then
+x:=5; write x; read x; write x; { input an integer }
+if 4 < x then
   write 100;
 else
   write 200;

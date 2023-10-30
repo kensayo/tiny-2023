@@ -29,6 +29,8 @@ Mas informacion en: http//4thmouse.com/index.php/2007/02/15/using-custom-symbols
 		TablaSimbolos ts = new TablaSimbolos();
 		ts.cargarTabla(root);
 		ts.ImprimirClaves();
+		Semantico.setTablaSimbolos(ts);
+        Semantico.checkTree(root, false);
 		Generador.setTablaSimbolos(ts);
 		Generador.generarCodigoObjeto(root);
 	}
@@ -103,7 +105,7 @@ program     ::= stmt_seq:s	{: if(debug) System.out.println("\t regla 1");
 					:}
 		;
 
-stmt_seq    ::= stmt_seq:ini SEMI stmt:sent	{: if(debug) System.out.println("\t regla 2a"); 
+stmt_seq    ::= stmt_seq:ini SEMI stmt:sent	{: if(debug) System.out.println("\t regla 2a");
 						NodoBase hijoActual = ini;
 						if(hijoActual !=null){
 							while(hijoActual.TieneHermano()){
@@ -115,7 +117,7 @@ stmt_seq    ::= stmt_seq:ini SEMI stmt:sent	{: if(debug) System.out.println("\t 
 							RESULT=sent;
 						}
 						:}
-            | stmt:sent	{: if(debug) System.out.println("\t regla 2b"); 
+            | stmt:sent	{: if(debug) System.out.println("\t regla 2b");
 				RESULT=sent;				
 				:}
 		;
@@ -138,7 +140,7 @@ stmt        ::= if_stmt:sif	{: if(debug) System.out.println("\t regla 3a");
             | write_stmt:sesc	{: if(debug) System.out.println("\t regla 3e"); 
 					RESULT=sesc;
 					:}
-            | error	{: if(debug) System.out.println("\t regla 3f"); 
+            | error	{: if(debug) System.out.println("\t regla 3f");
 				System.out.println("Ocurrio error en cup # 0004");
 				RESULT=null;
 				:}
