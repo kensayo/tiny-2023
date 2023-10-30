@@ -104,10 +104,16 @@ static void imprimirNodo( NodoBase raiz )
 			System.out.println("<");
 		if(sel==tipoOp.mayor)
 			System.out.println(">");
+		if(sel==tipoOp.menor_igual)
+			System.out.print("<=");
 		if(sel==tipoOp.mayor_igual)
 			System.out.println(">=");
 		if(sel==tipoOp.igual)
 			System.out.println("=");
+		if (sel == tipoOp.op_and)
+			System.out.println("&&");
+		if (sel == tipoOp.op_or)
+			System.out.println("||");
 		if(sel==tipoOp.mas)
 			System.out.println("+");
 		if(sel==tipoOp.menos)

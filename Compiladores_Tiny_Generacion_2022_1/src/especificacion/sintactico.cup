@@ -8,8 +8,8 @@ import java.io.InputStreamReader;
 parser code {:
 
 /***********
-SymbolFactory es una nueva caracteristica que ha sido añadida a las version 11a de cup, la cual facilita la implementacion de clases Symbol personalizadas
-, esto debido a que dicha clase no provee mucha información de contexto que podria ser util para el analisis semantico o ayudar en la construccion del AST
+SymbolFactory es una nueva caracteristica que ha sido aï¿½adida a las version 11a de cup, la cual facilita la implementacion de clases Symbol personalizadas
+, esto debido a que dicha clase no provee mucha informaciï¿½n de contexto que podria ser util para el analisis semantico o ayudar en la construccion del AST
 Mas informacion en: http//4thmouse.com/index.php/2007/02/15/using-custom-symbols-in-cup/
 ***********/
 	public static void main(String args[]) throws Exception {
@@ -63,8 +63,11 @@ terminal String NUM;
 terminal ASSIGN;
 terminal EQ;
 terminal LT;
+terminal LEQT;
 terminal GT;
 terminal GET;
+terminal AND;
+terminal OR;
 terminal PLUS;
 terminal MINUS;
 terminal TIMES;
@@ -192,17 +195,26 @@ write_stmt  ::= WRITE exp:ex	{: if(debug) System.out.println("\t regla 8");
 		;
 
 exp         ::= simple_exp:exI LT simple_exp:exD	{: if(debug) System.out.println("\t regla 9a"); 
-								RESULT = new NodoOperacion(exI,tipoOp.menor,exD);
-								:}
+					RESULT = new NodoOperacion(exI,tipoOp.menor,exD);
+					:}
 		| simple_exp:exI GT simple_exp:exD	{: if(debug) System.out.println("\t regla 9b");
-        							RESULT = new NodoOperacion(exI,tipoOp.mayor,exD);
+        			RESULT = new NodoOperacion(exI,tipoOp.mayor,exD);
         							:}
-        | simple_exp:exI GET simple_exp:exD	{: if(debug) System.out.println("\t regla 9c");
-                							RESULT = new NodoOperacion(exI,tipoOp.mayor_igual,exD);
+		| simple_exp:exI LEQT simple_exp:exD	{: if(debug) System.out.println("\t regla 9c");
+                	RESULT = new NodoOperacion(exI,tipoOp.menor_igual,exD);
                 							:}
-		| simple_exp:exI EQ simple_exp:exD	{: if(debug) System.out.println("\t regla 9d");
-							RESULT = new NodoOperacion(exI,tipoOp.igual,exD);
-							:}
+        | simple_exp:exI GET simple_exp:exD	{: if(debug) System.out.println("\t regla 9d");
+                	RESULT = new NodoOperacion(exI,tipoOp.mayor_igual,exD);
+                	:}
+		| simple_exp:exI OR simple_exp:exD	{:  if(debug) System.out.println("\t regla exp_logic OR");
+                    RESULT = new NodoOperacion(exI, tipoOp.op_or, exD);
+					:}
+        | simple_exp:exI AND simple_exp:exD	{: if(debug) System.out.println("\t regla exp_logic AND");
+                    RESULT = new NodoOperacion(exI, tipoOp.op_and, exD);
+                	:}
+		| simple_exp:exI EQ simple_exp:exD	{: if(debug) System.out.println("\t regla 9e");
+					RESULT = new NodoOperacion(exI,tipoOp.igual,exD);
+					:}
 		| simple_exp:ex	{: if(debug) System.out.println("\t regla 9d");
 					RESULT = ex;
 					:}
