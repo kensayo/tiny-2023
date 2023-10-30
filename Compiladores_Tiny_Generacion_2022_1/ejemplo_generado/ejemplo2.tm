@@ -1,10 +1,7 @@
-*      Compilacion TINY para el codigo objeto TM
-*      Archivo: NOMBRE_ARREGLAR
-*      Preludio estandar:
 0:       LD       6,0(0)      cargar la maxima direccion desde la localidad 0
 1:       ST       0,0(0)      limpio el registro de la localidad 0
 *      -> leer
-2:       IN       0,0,0      leer: lee un valor entero
+2:       IN       0,0,0      leer: lee un valor entero 
 3:       ST       0,0(5)      leer: almaceno el valor entero leido en el id x
 *      <- leer
 *      -> if
@@ -41,4 +38,4 @@
 16:       LDA       7,2(7)      if: jmp hacia el final
 *      <- if
 *      Fin de la ejecucion.
-19:       HALT       0,0,0
+19:       HALT       0,0,0   
